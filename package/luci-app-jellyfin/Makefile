@@ -7,9 +7,6 @@ PKG_NAME:=luci-app-jellyfin
 PKG_VERSION:=1.0.0
 PKG_RELEASE:=20210912
 
-define Package/$(PKG_NAME)/conffiles
-/etc/config/jellyfin
-endef
 
 LUCI_TITLE:=LuCI support for jellyfin
 LUCI_PKGARCH:=all
