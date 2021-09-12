@@ -6,19 +6,19 @@
                 if (st.container_install) {
                     if (st.running) {
                         const htmlString = '<br/><br/><em><%:The Jellyfin service is running.%></em>'
-                            + "<br/><br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:open Jellyfin%> \" onclick=\"window.open('http://" + window.location.hostname + ":" + st.port + "/')\" />"
-                            + "<input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:stop Jellyfin%> \" onclick=\"stop_container('" + st.container_id + "')\" />";
+                            + "<br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:open Jellyfin%> \" onclick=\"window.open('http://" + window.location.hostname + ":" + st.port + "/')\" />"
+                            + "<input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:stop Jellyfin%> \" onclick=\"stop_container('" + st.container_id + "')\" /><br/><br/>";
                         tb.innerHTML = htmlString;
                     }
                     else {
                         tb.innerHTML = '<br/><br/><em><%:The Jellyfin service is not running.%></em>'
-                            + "<br/><br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:run Jellyfin%> \" onclick=\"start_container('" + st.container_id + "')\" />"
-                            + "<input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:uninstall Jellyfin%> \" onclick=\"uninstall_container('" + st.container_id + "')\" />";
+                            + "<br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:run Jellyfin%> \" onclick=\"start_container('" + st.container_id + "')\" />"
+                            + "<input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:uninstall Jellyfin%> \" onclick=\"uninstall_container('" + st.container_id + "')\" /><br/><br/>";
                     }
                 }
                 else {
                     tb.innerHTML = '<br/><br/><em><%:The Jellyfin service is not installed.%></em>'
-                        + "<br/><br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:install Jellyfin%> \" onclick=\"install_container()\" />";
+                        + "<br/><br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:install Jellyfin%> \" onclick=\"install_container()\" /><br/><br/>";
                 }
             }
         }
