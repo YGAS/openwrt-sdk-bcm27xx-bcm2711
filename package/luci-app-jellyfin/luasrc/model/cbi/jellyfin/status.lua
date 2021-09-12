@@ -2,7 +2,7 @@ local m, s
 local uci = luci.model.uci.cursor()
 local sys = require 'luci.sys'
 
-m = Map("mycbi", translate("Jellyfin"), translate("Jellyfin is the volunteer-built media solution that puts you in control of your media. Stream to any device from your own server, with no strings attached. Your media, your server, your way. ")
+m = Map("jellyfin", translate("Jellyfin"), translate("Jellyfin is the volunteer-built media solution that puts you in control of your media. Stream to any device from your own server, with no strings attached. Your media, your server, your way. ")
 .. translatef("For further information "
 .. "<a href=\"%s\" target=\"_blank\">"
 .. "访问官网</a>", "https://jellyfin.org/"))

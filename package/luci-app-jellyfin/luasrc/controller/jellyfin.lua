@@ -16,34 +16,42 @@ end
 local sys  = require "luci.sys"
 local uci  = require "luci.model.uci".cursor()
 local keyword  = "jellyfin"
-local port = tonumber(uci:get_first(keyword, keyword, "port"))
 local util  = require("luci.util")
-local container_id = util.trim(util.exec("docker ps -aqf'name='"..keyword.."''"))
 
 function container_status()
+	local docker_path = util.exec("which docker")
+	local docker_server_version = util.exec("docker info | grep 'Server Version'")
+	local docker_install = (string.len(docker_path) > 0)
+	local docker_start = (string.len(docker_server_version) > 0)
+	local port = tonumber(uci:get_first(keyword, keyword, "port"))
+	local container_id = util.trim(util.exec("docker ps -aqf'name='"..keyword.."''"))
+	local container_install = (string.len(container_id) > 0)
+	local container_running = (sys.call("pidof '"..keyword.."' >/dev/null") == 0)
 
 	local status = {
-		docker_install = (sys.call("docker -v' >/dev/null") ~= 0),
-		running = (sys.call("pidof '"..keyword.."' >/dev/null") == 0),
-		port = (port or 8096),
+		docker_install = docker_install,
+		docker_start = docker_start,
 		container_id = container_id,
-		container_install = (string.len(container_id) > 0)
+		container_install = container_install,
+		container_running = container_running,
+		container_port = (port or 8096),
 	}
 
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(status)
+	return status
 end
 
 function stop_container()
-	container_id = luci.http.formvalue('container_id')
+	local status = container_status()
+	local container_id = status.container_id
 	util.exec("docker stop '"..container_id.."'")
-	container_status()
 end
 
 function start_container()
-	container_id = luci.http.formvalue('container_id')
+	local status = container_status()
+	local container_id = status.container_id
 	util.exec("docker start '"..container_id.."'")
-	container_status()
 end
 
 function install_container()
@@ -52,9 +60,9 @@ function install_container()
 end
 
 function uninstall_container()
-	container_id = luci.http.formvalue('container_id')
+	local status = container_status()
+	local container_id = status.container_id
 	util.exec("docker container rm '"..container_id.."'")
-	container_status()
 end
 
 -- 总结：
