@@ -55,7 +55,7 @@ function start_container()
 end
 
 function install_container()
-	luci.sys.call('sh /usr/share/mycbi/mycbi.sh')
+	luci.sys.call('sh /usr/share/jellyfin/install.sh')
 	container_status()
 end
 
