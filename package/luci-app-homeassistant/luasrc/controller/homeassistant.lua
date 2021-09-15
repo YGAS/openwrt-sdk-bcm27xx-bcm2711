@@ -26,7 +26,7 @@ function container_status()
 	local port = tonumber(uci:get_first(keyword, keyword, "port"))
 	local container_id = util.trim(util.exec("docker ps -aqf'name='"..keyword.."''"))
 	local container_install = (string.len(container_id) > 0)
-	local container_running = (sys.call("pidof '"..keyword.."' >/dev/null") == 0)
+	local container_running = (sys.call("docker ps | grep '"..container_id.."' >/dev/null") == 0)
 
 	local status = {
 		docker_install = docker_install,
