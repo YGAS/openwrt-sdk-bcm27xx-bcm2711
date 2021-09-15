@@ -2,10 +2,9 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-homeassistant
+PKG_NAME:=luci-app-hassio
 PKG_VERSION:=1.0.0
 PKG_RELEASE:=20210915
-
 
 LUCI_TITLE:=LuCI support for homeassistant
 LUCI_PKGARCH:=all

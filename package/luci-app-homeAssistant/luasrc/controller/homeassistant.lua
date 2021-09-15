@@ -1,4 +1,4 @@
-module("luci.controller.homeassistant", package.seeall)
+module("luci.controller.hassio", package.seeall)
 
 function index()
 	
@@ -34,7 +34,7 @@ function container_status()
 		container_id = container_id,
 		container_install = container_install,
 		container_running = container_running,
-		container_port = (port or 8096),
+		container_port = (port or 8123),
 	}
 
 	luci.http.prepare_content("application/json")
