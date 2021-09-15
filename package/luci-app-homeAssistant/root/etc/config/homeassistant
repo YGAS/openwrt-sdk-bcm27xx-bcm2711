@@ -1,3 +1,3 @@
-config jellyfin
+config homeassistant
 	option 'port' '8123'
 	option 'enabled' '1'
