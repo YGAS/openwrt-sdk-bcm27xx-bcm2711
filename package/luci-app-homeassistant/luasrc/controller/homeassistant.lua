@@ -1,4 +1,4 @@
-module("luci.controller.hassio", package.seeall)
+module("luci.controller.homeassistant", package.seeall)
 
 function index()
 	
