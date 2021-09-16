@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rm -rf /opt/docker/hassio
+
 docker run -d --name hassio_supervisor --privileged \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /var/run/dbus:/var/run/dbus \
