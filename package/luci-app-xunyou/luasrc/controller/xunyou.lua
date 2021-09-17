@@ -18,7 +18,7 @@ local keyword  = "xunyou"
 local util  = require("luci.util")
 
 function container_status()
-	local xunyou_running = (util.exec("ps | grep -v grep | grep -c -w 'xunyou_config'") == 1)
+	local xunyou_running = tonumber(util.exec("ps | grep -v grep | grep -c -w 'xunyou_config'")) == 1
 
 	local status = {
 		xunyou_running = xunyou_running,
@@ -30,11 +30,13 @@ function container_status()
 end
 
 function stop_container()
-	util.exec("./xunyou/scripts/xunyou_config.sh stop")
+	util.exec("sh /xunyou/scripts/xunyou_config.sh stop")
 end
 
 function start_container()
-	util.exec("./xunyou/scripts/xunyou_config.sh start")
+	luci.sys.call('sh /xunyou/scripts/xunyou_config.sh start')
+
+	-- util.exec("./xunyou/scripts/xunyou_config.sh start")
 end
 
 

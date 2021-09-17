@@ -11,8 +11,7 @@
                 }
                 else{
                     tb.innerHTML = '<br/><em><%:The xunyou service is not running.%></em>'
-                                + "<br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:run xunyou%> \" onclick=\"start_container('" + st.container_id + "')\" />"
-                                + "<input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:uninstall xunyou%> \" onclick=\"uninstall_container('" + st.container_id + "')\" /><br/><br/>";
+                                + "<br/><br/><input class=\"btn cbi-button cbi-button-apply\" type=\"button\" value=\" <%:run xunyou%> \" onclick=\"start_container()\" />";
                 }
             }
         }
@@ -38,9 +37,7 @@
     const START_URL = '<%=luci.dispatcher.build_url("admin", "services", "xunyou","start")%>';
 
     function start_container(x) {
-
         XHR.get(START_URL, { container_id: x }, (x, d) => {
-            // alert(" 打开容器'" + d.container_id + "' ");
         });
         return false
     }
