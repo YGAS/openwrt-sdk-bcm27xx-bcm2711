@@ -34,9 +34,6 @@ define Package/$(PKG_NAME)/description
   xunyou
 endef
 
-define Package/$(PKG_NAME)/conffiles
-/etc/config/xunyou
-endef
 
 define Build/Configure
 endef
@@ -48,7 +45,5 @@ define Package/$(PKG_NAME)/install
   $(INSTALL_DIR) $(1)
   cp -pR ./files/xunyou $(1)/
 endef
-
-
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
